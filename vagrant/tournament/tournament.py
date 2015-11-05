@@ -35,7 +35,6 @@ def countPlayers():
     cur = conn.cursor()
     cur.execute("SELECT COUNT(ID) FROM players")
     (player_count,) = cur.fetchone()
-    conn.commit()
     conn.close()
     return player_count
 
@@ -74,7 +73,6 @@ def playerStandings():
     cur = conn.cursor()
     cur.execute("SELECT * FROM standings")
     standings = cur.fetchall()
-    conn.commit()
     conn.close()
     return standings
 
@@ -114,7 +112,6 @@ def swissPairings():
     cur = conn.cursor()
     cur.execute("SELECT * FROM pairings")
     pairings = cur.fetchall()
-    conn.commit()
     conn.close()
     return pairings
 

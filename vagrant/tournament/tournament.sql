@@ -1,11 +1,7 @@
 -- Table definitions for the tournament project.
+DROP DATABASE IF EXISTS tournament;
 CREATE DATABASE tournament;
-
--- For testing we drop all tables and views and rewrite them for convenience
-DROP VIEW IF EXISTS pairings;
-DROP VIEW IF EXISTS standings;
-DROP TABLE IF EXISTS matches;
-DROP TABLE IF EXISTS players;
+\c tournament
 
 -- Players identified by unique serial id, name can be any string
 CREATE TABLE players (
@@ -14,6 +10,7 @@ name varchar
 );
 
 -- matches are recorded with player's ids, individual game wins, and draw count
+-- both game win count and draw count are necessary to determine a match winner
 CREATE TABLE matches (
 id serial PRIMARY KEY,
 player_one_id serial references players(id),
@@ -49,6 +46,7 @@ ORDER BY match_points DESC
 -- Pairings are created by taking the odd rows from standings
 -- and joining the even rows directly below
 -- if there are an odd number of players the final player recieves a bye
+-- pairings are made top down by match_points
 CREATE VIEW pairings AS
 SELECT 
 s.id as player_one_id
@@ -57,14 +55,14 @@ s.id as player_one_id
 ,s2.name as player_two_name
 FROM (
 	SELECT 
-	ROW_NUMBER() OVER(ORDER BY match_points) AS rn
+	ROW_NUMBER() OVER(ORDER BY match_points DESC) AS rn
 	, *
 	FROM standings
 ) AS s
 LEFT JOIN (
 	SELECT * FROM (
 		SELECT 
-		ROW_NUMBER() OVER(ORDER BY match_points) AS rn
+		ROW_NUMBER() OVER(ORDER BY match_points DESC) AS rn
 		, *
 		FROM standings
 	) as even_rows
