@@ -13,8 +13,10 @@ Udacity tournament database and tests.
 ```
 <br>
 #####Requirements:
-  Python 2.7
+  Python 2.7<br>
   Vagrant VM
 <br><br>
 #####Quickstart:
+Start provided Vagrant VM and log in.<br>
+Navigate to /vagrant/tournament/<br>
 Run tournament_test.py to create and test a tournament database.
