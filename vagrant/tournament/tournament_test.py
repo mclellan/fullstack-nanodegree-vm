@@ -80,6 +80,7 @@ def testStandingsBeforeMatches():
 
 
 def testReportMatches():
+    """ modified to account for draws in reportMatch """
     deleteMatches()
     deletePlayers()
     registerPlayer("Bruno Walton")
@@ -88,20 +89,21 @@ def testReportMatches():
     registerPlayer("Diane Grant")
     standings = playerStandings()
     [id1, id2, id3, id4] = [row[0] for row in standings]
-    reportMatch(id1, id2)
-    reportMatch(id3, id4)
+    reportMatch(id1, id2, 2, 0, 0)
+    reportMatch(id3, id4, 2, 0, 1)
     standings = playerStandings()
     for (i, n, w, m) in standings:
         if m != 1:
             raise ValueError("Each player should have one match recorded.")
-        if i in (id1, id3) and w != 1:
-            raise ValueError("Each match winner should have one win recorded.")
+        if i in (id1, id3) and w != 3: 
+            raise ValueError("Each match winner should have three match points recorded.")
         elif i in (id2, id4) and w != 0:
             raise ValueError("Each match loser should have zero wins recorded.")
     print "7. After a match, players have updated standings."
 
 
 def testPairings():
+    """ modified to account for draws in reportMatch """
     deleteMatches()
     deletePlayers()
     registerPlayer("Twilight Sparkle")
@@ -110,8 +112,8 @@ def testPairings():
     registerPlayer("Pinkie Pie")
     standings = playerStandings()
     [id1, id2, id3, id4] = [row[0] for row in standings]
-    reportMatch(id1, id2)
-    reportMatch(id3, id4)
+    reportMatch(id1, id2, 2, 0, 0)
+    reportMatch(id3, id4, 2, 0, 1)
     pairings = swissPairings()
     if len(pairings) != 2:
         raise ValueError(

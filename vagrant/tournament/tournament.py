@@ -12,23 +12,34 @@ def connect():
 
 
 def deleteMatches():
-	conn = connect()
-	cur = conn.cursor()
-	cur.execute("DELETE * FROM TOURNAMENT")
-	conn.commit()
-	cur.close()
-	conn.close()
     """Remove all the match records from the database."""
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute('DELETE FROM matches')
+    conn.commit()
+    conn.close()
 
 
 def deletePlayers():
     """Remove all the player records from the database."""
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("DELETE FROM players")
+    conn.commit()
+    conn.close()
 
-
+    
 def countPlayers():
     """Returns the number of players currently registered."""
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("SELECT COUNT(ID) FROM players")
+    (player_count,) = cur.fetchone()
+    conn.commit()
+    conn.close()
+    return player_count
 
-
+    
 def registerPlayer(name):
     """Adds a player to the tournament database.
   
@@ -38,6 +49,11 @@ def registerPlayer(name):
     Args:
       name: the player's full name (need not be unique).
     """
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("INSERT INTO players (name) values (%s)",(name,))
+    conn.commit()
+    conn.close()
 
 
 def playerStandings():
@@ -50,18 +66,33 @@ def playerStandings():
       A list of tuples, each of which contains (id, name, wins, matches):
         id: the player's unique id (assigned by the database)
         name: the player's full name (as registered)
-        wins: the number of matches the player has won
+        points: the number of match points the player has
+         -- wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM standings")
+    standings = cur.fetchall()
+    conn.commit()
+    conn.close()
+    return standings
 
 
-def reportMatch(winner, loser):
+def reportMatch(player_one_id, player_two_id, player_one_game_wins, player_two_game_wins, draws ):
     """Records the outcome of a single match between two players.
-
     Args:
-      winner:  the id number of the player who won
-      loser:  the id number of the player who lost
+      player_one_id:  the id of player one
+      player_two_id:  the id of player two
+      player_one_game_wins: the number of games player one won
+      player_two_game_wins: the number of games player two won
+      draws: the number of drawn games
     """
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("INSERT INTO matches (player_one_id, player_two_id, player_one_game_wins, player_two_game_wins, draws) values (%s,%s,%s,%s,%s)",(player_one_id, player_two_id, player_one_game_wins, player_two_game_wins, draws))
+    conn.commit()
+    conn.close()
  
  
 def swissPairings():
@@ -79,5 +110,12 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM pairings")
+    pairings = cur.fetchall()
+    conn.commit()
+    conn.close()
+    return pairings
 
 
