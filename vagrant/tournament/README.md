@@ -6,7 +6,7 @@ Udacity tournament database and tests.
 <br><br>
 #####Contents of /vagrant/tournament/:
 ```
-   README.txt
+   README.md
    tournament.py
    tournament_test.py
    tournament.sql
@@ -19,4 +19,5 @@ Udacity tournament database and tests.
 #####Quickstart:
 Start provided Vagrant VM and log in.<br>
 Navigate to /vagrant/tournament/<br>
-Run tournament_test.py to create and test a tournament database.
+Create an connect to tournament database using: psql -f tournament.sql<br>
+Test functionality by running: python tournament_test.py

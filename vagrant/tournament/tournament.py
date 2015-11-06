@@ -77,18 +77,16 @@ def playerStandings():
     return standings
 
 
-def reportMatch(player_one_id, player_two_id, player_one_game_wins, player_two_game_wins, draws ):
+def reportMatch(winner_id, loser_id, match_draw ):
     """Records the outcome of a single match between two players.
     Args:
       player_one_id:  the id of player one
       player_two_id:  the id of player two
-      player_one_game_wins: the number of games player one won
-      player_two_game_wins: the number of games player two won
-      draws: the number of drawn games
+      match_draw: bool indicating drawn match
     """
     conn = connect()
     cur = conn.cursor()
-    cur.execute("INSERT INTO matches (player_one_id, player_two_id, player_one_game_wins, player_two_game_wins, draws) values (%s,%s,%s,%s,%s)",(player_one_id, player_two_id, player_one_game_wins, player_two_game_wins, draws))
+    cur.execute("INSERT INTO matches (winner_id, loser_id, match_draw) values (%s,%s,%s)",(winner_id, loser_id, match_draw))
     conn.commit()
     conn.close()
  
