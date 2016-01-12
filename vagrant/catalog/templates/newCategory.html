@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "navbar.html" %}
+
+<div id="content">
+	<div class="item">
+		<div class="item-header">
+			New Category
+		</div>
+
+		<form action="#" method = "post" role="form">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type ="text" class="form-control" maxlength="100" name="name">
+								<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
+				<a href = '{{url_for('catalog')}}'>
+					<button class="btn btn-default delete" type="button">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+* {
+	font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+	font-weight: 500;
+}
+html {
+	height: 100%;
+}
+body {
+	margin: 0px;
+  	font-weight: 400;
+  	line-height: 1.1;
+  	color: #333;
+  	background: #ecf0f1;
+  	height: 100%;
+}
+h2 {
+	font-size: 36px;
+	color: white;
+	line-height: 38px;
+}
+h3 {
+	font-size: 24px;
+	color: white;
+	line-height: 24px;
+	-webkit-margin-before: 0.5em;
+	-webkit-margin-after: 0.5em;
+}
+h4 {
+	font-size: 18px;
+	color: black;
+}
+.container {
+	height: 100%;
+	width: 100%;
+	padding-left: 0px;
+    padding-right: 0px;
+}
+#content {
+	margin-left: 265px;
+	padding: 20px;
+}
+.item {
+	border: 2px solid #1a242f;
+	padding: 10px;
+	margin: 20px;
+	box-shadow: 3px 3px #2c3e50;
+	min-width: 400px;
+	max-width: 500px;
+}
+.item img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+}
+.item-header {
+	margin: .5em;
+	font-size: 24px;
+	color: black;
+}
+#navbar {
+	float: left;
+	padding-left: 15px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	background: #2c3e50;
+	width: 250px;
+	color: white;
+	min-height: 100%;
+}
+.navbar p {
+	margin-bottom: 0px;
+	line-height: 16px;
+}
+.navbar a {
+  	text-decoration: none;
+  	color: #ecf0f1;
+  	font-size: 16px;
+  	line-height: 16px;
+  	display: block;
+  	padding: .8em;
+  	text-align: left;
+  	border-bottom: 1px solid #1a242f;
+}
+.navbar a:hover {
+  	background: #1a242f;
+}
+.login a {
+	padding: 0px;
+}
+.login a:hover {
+	background: #ecf0f1;
+	font-weight: 700;
+}
+.logintext {
+	font-size: 12px;
+  	margin-left: 100px;
+  	text-align: center;
+  	padding-top: 10px;
+  	padding-bottom: 15px;
+}
+.loginimg {
+  	float: left;
+  	margin-left: 10px;
+}

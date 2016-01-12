@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "navbar.html" %}
+<div id="content">
+	<div class="item">
+		<h3 style="color: black;">New Item:</h3>
+		<form action="#" method="post" role="form">
+			<div class="form-group">
+				<label for="category">Category:</label>
+				{% if input_category =="" %}
+					<input type ="text" maxlength="50" class="form-control" name="category" placeholder="Category of the item">
+				{% else %}
+					<input type ="text" maxlength="50" class="form-control" name="category" value="{{input_category}}">
+				{% endif %}
+			</div>
+			
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type ="text" maxlength="50" class="form-control" name="name" placeholder="Name of the item">
+			</div>
+
+			<div class="form-group">
+				<label for="description">Description:</label>
+				<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the item"></textarea>
+			</div>
+			
+			<div class="form-group">
+				<label for="picture">Picture:</label>
+				<div class="input-group">
+					<div class="input-group-addon">URL:</div>
+					<input type="text" class="form-control" maxlength="250" name="picture" placeholder="www.someurl.com/image.png">
+				</div>
+			</div>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
+				<a href = '{{url_for('catalog')}}'>
+					<button class="btn btn-default delete" type="button">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</a>
+		</form>
+	</div>
+</div>
+{% endblock %}
+

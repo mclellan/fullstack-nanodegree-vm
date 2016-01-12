@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "navbar.html" %}
+
+<div id="content">
+	<div class = 'flash'>
+	    {% with messages = get_flashed_messages() %}
+	      {% if messages %}
+	        <ul>
+	          {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	          {% endfor %}
+	        </ul>
+	      {% endif %}
+	    {% endwith %}
+	</div>
+
+	<div class="item">
+		<div class="item-header">
+			{{ category.name }} Items <i>({{ items|length }} items)      </i><a href="{{url_for('deleteCategory', category_name = category.name )}}">
+				<button class="btn btn-default">Delete Category</button>
+			</a>
+		</div>
+
+	{% if items !=[] %}	
+		{% for i in items %}
+			<h4><a href="{{url_for('showItem',category_name=category.name, item_name = i.name)}}">{{i.name}}</a></h4>
+		{% endfor %}
+	{% endif %}
+			<a href="/newItem?category={{category.name}}">
+			<button class="btn btn-default" id="new-item">
+				Add Item
+			</button>
+		</a>
+	</div>
+</div>
+
+{% endblock %}

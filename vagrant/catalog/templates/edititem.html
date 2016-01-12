@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "navbar.html" %}
+
+<div id="content">
+	<div class="item">
+		<h3 style="color: black;">Edit Item:</h3>
+
+		<form action="#" method="post" role="form">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+
+				<label for="description">Description:</label>
+				<textarea class="form-control" maxlength="250" rows="3" name="description">{{item.description}}</textarea>
+
+				<label for="picture">Picture:</label>
+				<div class="input-group">
+					<div class="input-group-addon">URL:</div>
+					<input type ="text" maxlength="250" class="form-control" name="picture" value="{{item.picture}}">
+				</div>
+				<label for="course">Category:</label>
+				<input type ="text" maxlength="100" class="form-control" name="category" value="{{item.category.name }}">
+				
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
+				<a href = '{{url_for('catalog')}}'>
+					<button class="btn btn-default delete" type="button">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</a>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
