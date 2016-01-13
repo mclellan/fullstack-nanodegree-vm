@@ -41,9 +41,21 @@ Udacity Catalog database and website.
 Start provided Vagrant VM and log in.<br>
 Navigate to /vagrant/catalog/<br>
 Ensure requirements are installed:
-   sudo pip install Flask
-   sudo pip install SQLAlchemy
-   sudo pip install pyatom
+    sudo pip install Flask
+    sudo pip install SQLAlchemy
+    sudo pip install pyatom
 Create database: python database_setup.py<br>
 Run web server: python project.py
 Visit localhost:8000/ in a web browser to access the page.
+<br>
+#####Features:
+* Guest users my view all content: catalog, categories, items. They will also be shown the add item and add category links but will be prompted to log in before they are allowed to submit content.
+* Logged in users may add content of any type and edit/delete that content later. Users may not delete another user's content. 
+* Categories without any items may be deleted by any user. 
+* Two API endpoints have been implemented: JSON and pyAtom accessible at:
+  * /catalog/JSON    (all items in the database)
+  * /catalog/<category_name>/JSON    (all items in a category)
+  * /catalog/<category_name>/<item_name>/JSON    (a single item)
+  * /catalog/atomfeed    (feed of user actions such as new items, item edits, item deletion, etc)
+* Item names are unique by category (e.g. Category Basketball may only have one item "Ball" but a separate category may also contain "Ball")
+* User actions are reflected on the next page-load via Flask's flash.
