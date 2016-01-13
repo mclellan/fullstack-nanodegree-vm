@@ -41,9 +41,9 @@ Udacity Catalog database and website.
 Start provided Vagrant VM and log in.<br>
 Navigate to /vagrant/catalog/<br>
 Ensure requirements are installed:
-    sudo pip install Flask
-    sudo pip install SQLAlchemy
-    sudo pip install pyatom
+* sudo pip install Flask
+* sudo pip install SQLAlchemy
+* sudo pip install pyatom
 Create database: python database_setup.py<br>
 Run web server: python project.py<br>
 Visit localhost:8000/ in a web browser to access the page.
