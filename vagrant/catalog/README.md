@@ -45,7 +45,7 @@ Ensure requirements are installed:
     sudo pip install SQLAlchemy
     sudo pip install pyatom
 Create database: python database_setup.py<br>
-Run web server: python project.py
+Run web server: python project.py<br>
 Visit localhost:8000/ in a web browser to access the page.
 <br>
 #####Features:
