@@ -43,10 +43,10 @@ Navigate to /vagrant/catalog/<br>
 Ensure requirements are installed:
 * sudo pip install Flask
 * sudo pip install SQLAlchemy
-* sudo pip install pyatom
+* sudo pip install pyatom<br>
 Create database: python database_setup.py<br>
 Run web server: python project.py<br>
-Visit localhost:8000/ in a web browser to access the page.
+Visit localhost:8000/ in a web browser to access the page.<br>
 <br>
 #####Features:
 * Guest users my view all content: catalog, categories, items. They will also be shown the add item and add category links but will be prompted to log in before they are allowed to submit content.
