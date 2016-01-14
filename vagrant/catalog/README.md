@@ -53,9 +53,10 @@ Visit localhost:8000/ in a web browser to access the page.<br>
 * Logged in users may add content of any type and edit/delete that content later. Users may not delete another user's content. 
 * Categories without any items may be deleted by any user. 
 * Two API endpoints have been implemented: JSON and pyAtom accessible at:
-  * /catalog/JSON    (all items in the database)
-  * /catalog/\<category_name>/JSON    (all items in a category)
-  * /catalog/\<category_name>/\<item_name>/JSON    (a single item)
-  * /catalog/atomfeed    (feed of user actions such as new items, item edits, item deletion, etc)
+  * /catalog/JSON    _(all items in the database)_
+  * /catalog/\<category_name>/JSON    _(all items in a category)_
+  * /catalog/\<category_name>/\<item_name>/JSON    _(a single item)_
+  * /catalog/atomfeed    _(feed of user actions such as new items, item edits, item deletion, etc)_
 * Item names are unique by category (e.g. Category Basketball may only have one item "Ball" but a separate category may also contain "Ball")
 * User actions are reflected on the next page-load via Flask's flash.
+* Items may have images that are displayed with the description.
