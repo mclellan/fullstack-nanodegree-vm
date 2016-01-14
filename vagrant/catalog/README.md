@@ -1,6 +1,9 @@
 # udacity-catalog
 Udacity Catalog database and website.
 
+#####Source credit notes:
+The project uses the Auth course Restaurant Menu App source as a foundation. Some remnants of the source is evident in the python methods that handle oauth implementation, flask message flashing, and project includes. Virtually all templates and methods have been modified heavily to account for the departure in style and functionality.
+
 #####Get latest revision:
   https://github.com/mclellan/fullstack-nanodegree-vm/archive/master.zip
 <br><br>
